@@ -28,5 +28,4 @@ vim.keymap.set('n','<leader>tx','<cmd>tabclose<CR>',{ desc = 'Close Tab'})
 --vim.keymap.set('n','','',{ desc = ''})
 --vim.keymap.set('n','','',{ desc = ''})
 
-
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>', {desc = 'Open LazyGit'})
