@@ -20,7 +20,7 @@ return {
 
       local lspconfig = require("lspconfig")
 
-      lspconfig.tsserver.setup({ capabilities = capabilities})
+      lspconfig.tsserver.setup({ capabilities = capabilities })
 
       vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, { desc = 'LSP Buffer Hover'})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'LSP Buffer Hover'})
