@@ -3,7 +3,14 @@ return {
    dependencies = {"nvim-lua/plenary.nvim"},
    ft = 'http',
    config = function()
-    require("rest-nvim").setup({})
+    require("rest-nvim").setup({
+      result_split_in_place = true,
+      result = {
+        formatters = {
+          json = "jq",
+        }
+      }
+    })
 
     vim.keymap.set('n','<leader>rr', '<Plug>RestNvim', {desc = 'Run REST route'})
     vim.keymap.set('n','<leader>rl', '<Plug>RestNvimPreview', { noremap = true, buffer = buff, desc = 'Last REST route'})

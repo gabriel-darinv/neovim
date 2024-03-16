@@ -10,10 +10,9 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.api.nvim_create_autocmd("VimEnter", {
-  command = "Neotree toggle",
-})
---local opts = {}
+--vim.api.nvim_create_autocmd("VimEnter", {
+--  command = "Neotree toggle",
+--})
 require("vim-options")
 require("lazy").setup("plugins")
 
