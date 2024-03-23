@@ -3,12 +3,30 @@ return {
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",       
+    "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim",    
+    -- "3rd/image.nvim",
   },
   config = function()
-    require("neo-tree").setup({  
+    require("neo-tree").setup({
+      source_selector = {
+        winbar = false,
+        statusline = true,
+      },
+      filesystem = {
+        filtered_items = {
+          visible = false,
+          show_hidden_count = true,
+          hide_dotfiles = true,
+          hide_gitignored = true,
+          hide_by_name = {
+            '.git',
+            'node_modules',
+            '*lock.json',
+          },
+          never_show = {},
+        },
+      },
       default_component_configs = {
         close_if_last_window = false,
         popup_border_style = "rounded",
@@ -24,23 +42,23 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = "⁅+⁆", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified  = "M", -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted   = "×",-- this can only be used in the git_status source
-            renamed   = "R",-- this can only be used in the git_status source
+            added     = "A", -- "⁅+⁆", -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified  = "", -- "M", -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted   = "D", -- "×",-- this can only be used in the git_status source
+            renamed   = "R", -- "R",-- this can only be used in the git_status source
             -- Status type
             untracked = "U", -- 
-            ignored   = "",-- 
+            ignored   = "i", -- "",-- 
             unstaged  = "◯", -- µ⨆⨆∪⊔⊠⋄⋐⋱⋃↖↗↘↙→●◉◯◶ÚŮUi$₿£i⋮⋯⋱⊠⁅⁆*‼‽:§↥←◌₀∙∵∹≬⋆≈∷∸∘₀⁰√
             staged    = "◉",
-            conflict  = "!",
+            conflict  = "!",
           }
         },
       }
     })
 
-    vim.keymap.set('n','<leader>e',':Neotree filesystem reveal left<CR>')
-    vim.keymap.set('i','<C-e>','<ESC>:Neotree filesystem reveal left<CR>')
+    vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
+    vim.keymap.set('i', '<C-e>', '<ESC>:Neotree filesystem reveal left<CR>')
     --vim.keymap.set('n','<leader><leader>',':Neotree filesystem reveal float<CR>')
   end
 }
